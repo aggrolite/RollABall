@@ -14,12 +14,15 @@ public class PlayerController : MonoBehaviour {
 
 		// Add our sounds to a dictionary for easy lookup later.
 		//audioMap = new Dictionary<string, Audio> ();
-		audioMap = new Dictionary<string, AudioSource>();
-		foreach (AudioSource audio in GetComponents<AudioSource>()) {
-			audioMap.Add (audio.clip.name, audio);
+		if (audioMap == null) {
+			audioMap = new Dictionary<string, AudioSource>();
+			foreach (AudioSource audio in GetComponents<AudioSource>()) {
+				audioMap.Add (audio.clip.name, audio);
+			}
 		}
 
 		HideMenu ();
+
 	}
 	
 	// Update is called once per frame
